@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import java.sql.Blob;
 import java.sql.Date;
 import java.util.UUID;
 
@@ -10,31 +11,38 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class Message {
 
-public class UserChat {
- 
 	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID userChat_Id;
-	
-	 @ManyToOne private User user;
-	 
+	@GeneratedValue(strategy = GenerationType.UUID )
+	private UUID message_Id;
 	
 	
+	private UUID sender_Id;
+	private String Test;
+	private Blob mediaulr;
+	private Enum message_type;
+	private Date created_At;
+	private Date updated_At;
+	private Date Deleted_At;
+	@ManyToOne
+	private Media media;
+@ManyToOne
 	
-	private UUID last_Read_message;
-	private Date joined_At;
-	private Boolean isAdmin;
+	private Chat chat_id;
+
 	
-	
+ 	
 }
