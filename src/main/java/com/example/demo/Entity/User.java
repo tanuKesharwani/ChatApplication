@@ -5,7 +5,7 @@ import java.sql.Time;
 import java.util.List;
 import java.util.UUID;
 
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,9 +24,9 @@ import lombok.NoArgsConstructor;
 public class User {
 @Id
 @GeneratedValue(strategy = GenerationType.UUID)
- private UUID  user_id;
+ private UUID  userId;
  private String username;
- private Long phone_number;
+ private Long phoneNumber;
  private String email;
  private String password;
 
@@ -38,14 +38,14 @@ public class User {
  
  
  
-// 
+ 
 // 	@OneToMany
 // 	private List<MessageStatus> messageStatus;
 // 	@OneToOne
 // 	private Setting setting;
 // 	@OneToOne
 // 	private Contacts contact;
-// 	
-// 	@OneToMany
-// 	private UserChat userchat;
+ 	
+ @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+ private List<UserChat> userChats;
 }
