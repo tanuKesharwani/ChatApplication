@@ -24,7 +24,8 @@ public class BasicAuthentication {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+    @SuppressWarnings("deprecation")
+	@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
 //        return security.csrf(csrf->csrf.disable())
 //                .authorizeRequests(authorize->authorize.anyRequest().authenticated())
@@ -57,6 +58,9 @@ public class BasicAuthentication {
         return new InMemoryUserDetailsManager(user);
     }
 }
+
+
+
 
 
 
